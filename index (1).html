@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Musica — Music for Your Moment</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+:root{--gold:#e9b949;--gold2:#ffd978;--cream:#fff4d2;--bg:#090604;--panel:rgba(20,12,6,.82);--line:rgba(233,185,73,.25);--muted:#c9bca5;--red:#5c2817}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:#fffaf0;font-family:Inter,system-ui,sans-serif}
+body:before{content:"";position:fixed;inset:0;z-index:-3;background:radial-gradient(ellipse at 53% 38%,rgba(233,185,73,.2),transparent 27%),linear-gradient(90deg,#050302 0,#321806 25%,#170b04 50%,#321806 75%,#050302 100%)}
+body:after{content:"";position:fixed;inset:0;z-index:-2;background:radial-gradient(ellipse at center,transparent 18%,rgba(0,0,0,.78) 100%)}
+a{color:inherit;text-decoration:none}button,input,select{font:inherit}button{cursor:pointer}
+nav{position:fixed;z-index:50;top:0;left:0;right:0;padding:20px 4%;display:flex;align-items:center;justify-content:space-between;background:linear-gradient(#080401dd,transparent)}
+.logo{font:700 30px "Cormorant Garamond",serif;color:var(--cream)}.logo b{color:var(--gold)}
+.nav{display:flex;gap:28px;font-size:14px;color:#eadbbd}.nav a:hover{color:var(--gold)}
+.hero{min-height:850px;position:relative;overflow:hidden;display:flex;align-items:center}
+.theatre{position:absolute;inset:0;z-index:-1;overflow:hidden}
+.theatre:before{content:"";position:absolute;left:10%;right:10%;top:11%;height:57%;border:42px solid rgba(101,55,19,.35);border-bottom:0;border-radius:50% 50% 0 0;box-shadow:0 0 90px rgba(255,207,102,.12) inset}
+.theatre:after{content:"";position:absolute;inset:auto 0 0;height:35%;background:repeating-linear-gradient(90deg,#120906 0 8%,#3a1c0d 8.5% 9.8%,#160a06 10.2% 18%);transform:perspective(450px) rotateX(18deg);transform-origin:bottom;opacity:.95}
+.chandelier{position:absolute;top:18%;left:50%;width:170px;height:160px;transform:translateX(-50%);border:3px solid rgba(255,217,120,.55);border-top:0;border-radius:0 0 50% 50%;filter:drop-shadow(0 0 22px #e9b949)}
+.chandelier:before{content:"";position:absolute;left:50%;top:-80px;height:80px;border-left:2px solid #d5a83d}.chandelier:after{content:"✦ ✦ ✦";position:absolute;left:17px;bottom:20px;color:#ffd978;font-size:25px;letter-spacing:18px}
+.man{position:absolute;bottom:0;left:2%;width:43%;height:73%}
+.man .head{position:absolute;left:43%;bottom:57%;width:20%;height:22%;border-radius:48%;background:radial-gradient(circle at 50% 35%,#3c2717,#0b0704 75%);box-shadow:0 0 30px rgba(0,0,0,.8)}
+.man .body{position:absolute;left:20%;bottom:0;width:67%;height:61%;background:linear-gradient(145deg,#211711,#060403 70%);border-radius:40% 40% 0 0}
+.man .shoulder{position:absolute;left:5%;bottom:0;width:92%;height:27%;background:#0a0705;border-radius:50% 50% 0 0}
+.seat{position:absolute;bottom:-10px;left:-10%;width:125%;height:150px;background:linear-gradient(#5a311e,#1b0e08);border-radius:50% 50% 0 0;box-shadow:0 -14px 35px #000}
+.hero-content{width:min(730px,92%);margin-left:39%;padding-top:70px}
+.eyebrow{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);font-weight:700}
+h1,h2,h3{font-family:"Cormorant Garamond",serif}h1{font-size:clamp(60px,7vw,98px);line-height:.82;margin:18px 0;color:var(--cream)}
+.hero p{line-height:1.75;color:#e1d5bd;max-width:690px}
+.search{display:flex;margin-top:28px;border:1px solid var(--gold);border-radius:999px;padding:6px;background:#100a05c7;backdrop-filter:blur(10px)}
+.search input{flex:1;min-width:0;background:transparent;border:0;outline:0;color:#fff;padding:15px 20px}
+.primary{border:0;border-radius:999px;background:var(--gold);color:#231404;font-weight:700;padding:13px 24px}.primary:hover{background:var(--gold2)}
+.filters{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:10px}
+select{border:1px solid var(--line);background:#1a0e06dd;color:#eadfc9;padding:13px;border-radius:12px;outline:0}
+section{padding:90px 0}.container{width:min(1180px,92%);margin:auto}
+.head{display:flex;justify-content:space-between;gap:30px;align-items:end;margin-bottom:30px}.head p{max-width:480px;color:var(--muted);line-height:1.6}
+h2{font-size:53px;line-height:.95;margin:7px 0;color:var(--cream)}
+.modes{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.mode{position:relative;min-height:205px;padding:27px;border:1px solid var(--line);background:var(--panel);border-radius:20px;transition:.25s}.mode:hover{transform:translateY(-5px);border-color:#e9b94988}.mode .ico{font-size:27px;color:var(--gold)}.mode h3{font-size:31px;margin:10px 0}.mode p{font-size:14px;line-height:1.65;color:var(--muted)}.mode button{position:absolute;inset:0;border:0;background:transparent}
+.results{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.card{display:flex;gap:15px;align-items:center;padding:15px;background:var(--panel);border:1px solid var(--line);border-radius:17px}.cover{width:82px;height:82px;flex:none;border-radius:12px;display:grid;place-items:center;background:radial-gradient(circle,#f9d56c,#6f3c0b 42%,#170a04 72%);color:#2b1604;font-size:27px}.info{min-width:0;flex:1}.info h3{font-family:Inter,sans-serif;font-size:16px;margin:0 0 5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.info p{font-size:12px;color:var(--muted);margin:0}.tags{display:flex;gap:5px;flex-wrap:wrap;margin-top:9px}.tag{font-size:10px;padding:4px 7px;border-radius:20px;background:#e9b94912;color:#e0c37b}.actions{display:flex;gap:7px}.circle{width:39px;height:39px;border-radius:50%;border:1px solid var(--gold);background:transparent;color:var(--gold)}.circle:hover{background:var(--gold);color:#241506}.download{font-size:12px;border:1px solid #e9b94955;border-radius:9px;padding:8px 10px;color:#f1d58d;background:#e9b9490b}.download:hover{background:#e9b94922}
+.why{margin-top:24px;border:1px solid var(--line);border-radius:18px;padding:20px;background:linear-gradient(135deg,#40200eaa,#100804dd);color:var(--muted);line-height:1.6}.why b{color:var(--gold)}
+.community{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.community .item{padding:20px;border:1px solid var(--line);border-radius:16px;background:#160b05cc}.community h3{font-size:25px;margin:0 0 8px}.community p{font-size:12px;color:var(--muted);line-height:1.6}
+.notice{font-size:12px;color:#b9a88d;margin-top:14px}.notice a{text-decoration:underline;color:#e4c878}
+.status{text-align:center;padding:35px;color:var(--muted);border:1px dashed var(--line);border-radius:17px}
+.player{display:none;position:fixed;z-index:100;left:18px;right:18px;bottom:18px;align-items:center;gap:14px;padding:13px 16px;background:#0e0805f5;border:1px solid var(--gold);border-radius:18px;box-shadow:0 18px 60px #000}.player.show{display:flex}.mini{width:46px;height:46px;border-radius:9px;background:linear-gradient(135deg,#f5cb61,#4a240a)}.now{flex:1;min-width:130px}.now b{display:block}.now span{font-size:11px;color:var(--muted)}audio{width:min(420px,45vw)}
+footer{padding:55px 0;border-top:1px solid var(--line);text-align:center;color:#8f826d;font-size:12px}
+@media(max-width:850px){.nav{display:none}.hero{min-height:860px}.man{width:100%;left:-22%;opacity:.3}.hero-content{margin-left:auto;margin-right:auto;width:92%}.filters,.modes,.results,.community{grid-template-columns:1fr}.head{display:block}.head p{margin-top:10px}audio{width:100%}.player{flex-wrap:wrap}}
+</style>
+</head>
+<body>
+<nav><a class="logo" href="#">♪ <b>Musica</b></a><div class="nav"><a href="#moments">Moments</a><a href="#discover">Discover</a><a href="#community">Community</a></div></nav>
+
+<header class="hero">
+  <div class="theatre"><div class="chandelier"></div></div>
+  <div class="man"><div class="head"></div><div class="body"></div><div class="shoulder"></div><div class="seat"></div></div>
+  <div class="hero-content">
+    <div class="eyebrow">Music for your moment</div>
+    <h1>Find the sound<br>that fits you.</h1>
+    <p>不只是搜尋歌名。告訴 Musica 你的心情、場合、目的，以及想聽的語言、曲風或歌手；再參考其他人在相似情境下播放的音樂，找到適合你的開放授權歌曲。</p>
+    <div class="search"><input id="q" placeholder="例如：Italian jazz、calm piano、study music"><button class="primary" onclick="searchMusic()">Search</button></div>
+    <div class="filters">
+      <select id="language"><option value="">Language / 語言</option><option>English</option><option>Italian</option><option>Japanese</option><option>Korean</option><option>Chinese</option><option>French</option></select>
+      <select id="genre"><option value="">Genre / 曲風</option><option>jazz</option><option>classical</option><option>pop</option><option>rock</option><option>indie</option><option>electronic</option><option>piano</option></select>
+      <select id="license"><option value="">License / 授權</option><option value="cc0">CC0 / Public Domain</option><option value="by">CC BY</option><option value="by-sa">CC BY-SA</option><option value="by-nc">CC BY-NC</option><option value="by-nc-sa">CC BY-NC-SA</option><option value="by-nc-nd">CC BY-NC-ND</option></select>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+<section id="moments">
+ <div class="head"><div><div class="eyebrow">Choose your reason</div><h2>What brings you here?</h2></div><p>不知道歌名也沒關係。先選擇「為什麼要播放音樂」，網站會把相似使用情境中的歌曲納入推薦。</p></div>
+ <div class="modes">
+  <div class="mode" onclick="chooseMode('mood')"><div class="ico">◐</div><h3>Just a Mood</h3><p>只想依照現在的心情選歌：放鬆、快樂、浪漫、孤獨、懷舊……</p><button></button></div>
+  <div class="mode" onclick="chooseMode('occasion')"><div class="ico">♢</div><h3>For an Occasion</h3><p>晚餐、約會、旅行、派對、婚禮或某個特別的夜晚。</p><button></button></div>
+  <div class="mode" onclick="chooseMode('purpose')"><div class="ico">◎</div><h3>With a Purpose</h3><p>讀書、工作、創作、運動、放鬆或睡眠，讓音樂幫你完成一件事。</p><button></button></div>
+ </div>
+</section>
+
+<section id="discover">
+ <div class="head"><div><div class="eyebrow">Open music search</div><h2>Recommended for you</h2></div><p id="status">選擇上面的情境，或直接搜尋歌曲。搜尋結果來自 Openverse 的開放授權音訊。</p></div>
+ <div id="results"><div class="status">Ready to discover music.</div></div>
+ <div class="why"><b>Recommendation logic</b>　<span id="why">會把你的搜尋條件與「相似情境的人曾播放什麼」的資料一起轉成搜尋詞，再從開放授權音訊中排序結果。</span></div>
+ <div class="notice">授權提醒：Openverse 聚合開放授權媒體，但不保證每筆授權資訊的準確性。下載或再利用前，請進入原始作品頁確認授權與署名要求。 citeturn0search2turn1search8</div>
+</section>
+
+<section id="community">
+ <div class="head"><div><div class="eyebrow">Community signal</div><h2>People in similar moments</h2></div><p>這個區塊示範網站如何利用「情境 → 播放紀錄」形成推薦；正式版本可改成資料庫中的真實使用者匿名統計。</p></div>
+ <div class="community" id="communityCards"></div>
+</section>
+</main>
+
+<footer>Musica © 2026 · Music discovery through mood, moments and purpose.</footer>
+
+<div class="player" id="player"><div class="mini"></div><div class="now"><b id="nowTitle">—</b><span id="nowArtist">—</span></div><audio id="audio" controls></audio></div>
+
+<script>
+const community={
+ mood:["calm piano","melancholic ambient","romantic jazz","nostalgic acoustic"],
+ occasion:["dinner jazz","romantic dinner","travel indie","party electronic"],
+ purpose:["study piano","focus ambient","creative instrumental","relaxing classical"]
+};
+
+function currentQuery(extra=""){
+ const q=document.getElementById("q").value.trim();
+ const lang=document.getElementById("language").value;
+ const genre=document.getElementById("genre").value;
+ const parts=[q,lang,genre,extra].filter(Boolean);
+ return parts.join(" ");
+}
+
+async function fetchOpenverse(query){
+ const params=new URLSearchParams({q:query||"instrumental music",page_size:"12",category:"music"});
+ const lic=document.getElementById("license").value;
+ if(lic) params.set("license",lic);
+ const url="https://api.openverse.org/v1/audio/?"+params.toString();
+ const res=await fetch(url);
+ if(!res.ok) throw new Error("Openverse API error "+res.status);
+ const data=await res.json();
+ return data.results||[];
+}
+
+function esc(v=""){return String(v).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]));}
+
+function render(results){
+ const box=document.getElementById("results");
+ if(!results.length){box.innerHTML='<div class="status">沒有找到結果。請換一個關鍵字或放寬授權條件。</div>';return;}
+ box.className="results";
+ box.innerHTML=results.map((x,i)=>{
+   const title=esc(x.title||x.originalTitle||"Untitled");
+   const creator=esc(x.creator||"Unknown artist");
+   const lic=esc(x.license||"Unknown");
+   const provider=esc(x.providerName||x.provider||"Openverse source");
+   const url=x.url||"";
+   const landing=x.foreign_landing_url||x.detail_url||"https://openverse.org/";
+   const duration=x.duration?Math.round(x.duration/1000):0;
+   const min=Math.floor(duration/60),sec=String(duration%60).padStart(2,"0");
+   return `<article class="card">
+     <div class="cover">♪</div>
+     <div class="info"><h3 title="${title}">${title}</h3>
+       <p>${creator} · ${provider}${duration?` · ${min}:${sec}`:""}</p>
+       <div class="tags"><span class="tag">${lic}</span><span class="tag">open audio</span></div>
+     </div>
+     <div class="actions">
+       ${url?`<button class="circle" title="播放" onclick='play(${JSON.stringify({url,title,creator})})'>▶</button>`:""}
+       <a class="download" href="${esc(url||landing)}" target="_blank" rel="noopener" download>Download</a>
+       <a class="download" href="${esc(landing)}" target="_blank" rel="noopener">Source</a>
+     </div>
+   </article>`;
+ }).join("");
+}
+
+async function searchMusic(extra=""){
+ const status=document.getElementById("status"), box=document.getElementById("results");
+ status.textContent="Searching open-licensed audio…";
+ box.innerHTML='<div class="status">正在從網路搜尋音樂……</div>';
+ try{
+   const query=currentQuery(extra);
+   const results=await fetchOpenverse(query);
+   render(results);
+   status.textContent=`找到 ${results.length} 筆開放授權音訊`;
+   document.getElementById("why").textContent=`搜尋詞：「${query||"instrumental music"}」。結果會優先符合你的語言、曲風與情境。`;
+ }catch(e){
+   box.innerHTML=`<div class="status">無法連線到 Openverse API。請確認瀏覽器可以連上網路，或稍後再試。<br><small>${esc(e.message)}</small></div>`;
+   status.textContent="Search unavailable";
+ }
+ document.getElementById("discover").scrollIntoView({behavior:"smooth"});
+}
+
+function chooseMode(mode){
+ const terms=community[mode];
+ const extra=terms[Math.floor(Math.random()*terms.length)];
+ document.getElementById("q").value="";
+ searchMusic(extra);
+}
+
+function play(song){
+ const audio=document.getElementById("audio");
+ document.getElementById("nowTitle").textContent=song.title;
+ document.getElementById("nowArtist").textContent=song.creator;
+ document.getElementById("player").classList.add("show");
+ audio.src=song.url;
+ audio.play().catch(()=>{});
+}
+
+document.getElementById("q").addEventListener("keydown",e=>{if(e.key==="Enter")searchMusic()});
+
+document.getElementById("communityCards").innerHTML=[
+ ["Late-night study","study piano · focus ambient · calm"],
+ ["Romantic dinner","romantic jazz · acoustic · piano"],
+ ["Road trip","indie · upbeat · electronic"],
+ ["Quiet evening","ambient · classical · melancholic"]
+].map(x=>`<div class="item"><div class="eyebrow">People also played</div><h3>${x[0]}</h3><p>${x[1]}</p></div>`).join("");
+</script>
+</body>
+</html>
